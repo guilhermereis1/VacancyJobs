@@ -14,8 +14,11 @@ gem 'webpacker', '~> 5.0'
 gem 'devise'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'annotate'
+gem 'aws-sdk-s3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
