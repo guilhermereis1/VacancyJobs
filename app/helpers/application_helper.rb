@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def application_name
-    "VacancyJobs"
+    "Meu Emprego Certo"
   end
 
   def real(resource)
