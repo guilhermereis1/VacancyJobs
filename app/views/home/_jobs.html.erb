@@ -9,7 +9,7 @@
           <% if job.cover.attached? && job.cover.attachment.blob.present? && job.cover.attachment.blob.persisted? %>
             <%= image_tag(job.cover, class: "img-fluid rounded-start") %>
           <% else %>
-            <%= image_tag 'unavailable.png' %>
+            <%= image_tag('unavailable.png', class: "img-fluid rounded-start") %>
           <% end %>
         </div>
         <div class="col-md-8">
