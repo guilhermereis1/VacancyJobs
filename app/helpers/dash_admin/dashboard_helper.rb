@@ -1,0 +1,2 @@
+module DashAdmin::DashboardHelper
+end

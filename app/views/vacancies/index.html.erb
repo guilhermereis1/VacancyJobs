@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vagas (<%= @vacancies.count %>)</h1>
+<%= link_to 'Cadastrar Vaga', new_vacancy_path, class: "btn btn-primary" %>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Título</th>
+      <th>Categoria</th>
+      <th>Faixa Salarial</th>
+      <th>Cidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vacancies.each do |vacancy| %>
+      <tr>
+        <td><%= vacancy.name %></td>
+        <td><%= vacancy.category.name %></td>
+        <td><%= real(vacancy.salary) %></td>
+        <td><%= vacancy.city.name %></td>
+        <td>
+          <%= link_to 'Ver', vacancy, class: "btn btn-primary" %> | <%= link_to 'Editar', edit_vacancy_path(vacancy), class: "btn btn-warning" %> | <%= link_to 'Apagar', vacancy, method: :delete, data: { confirm: 'Tem Certeza Disso?' }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar Vaga', new_vacancy_path, class: "btn btn-primary" %>

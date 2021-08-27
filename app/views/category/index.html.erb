@@ -1,0 +1,26 @@
+<h1>Categoria: <%= @category.name %></h1>
+<p>Vagas: (<%= @category.vacancies.count %>)</p>
+<hr>
+
+<% @category.vacancies.each do |job| %>
+  <%= link_to vacancy_id_path(job.id), class: "link_vacancy" do %>
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <% if job.cover.attached? && job.cover.attachment.blob.present? && job.cover.attachment.blob.persisted? %>
+            <%= image_tag(job.cover, class: "img-fluid rounded-start") %>
+          <% else %>
+            <%= image_tag 'unavailable.png' %>
+          <% end %>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title"><%=h truncate(job.name, :length => 40) %> - <%= real(job.salary) %> - <%= job.city.name %></h5>
+            <p class="card-text"><%=h truncate(job.content, :length => 200) %></p>
+            <p class="card-text">Vaga postada em: <small class="text-muted"><b><%= job.created_at.to_s(:date_time_env_specific) %></b></small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

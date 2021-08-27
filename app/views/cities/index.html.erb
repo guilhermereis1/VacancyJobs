@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cidades (<%= @cities.count %>)</h1>
+
+<%= link_to 'Cadastrar Cidade', new_city_path, class: 'btn btn-primary' %>
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.name %></td>
+        <td><%= city.state.name %></td>
+        <td>
+          <%= link_to 'Ver', city, class: "btn btn-primary" %> | <%= link_to 'Editar', edit_city_path(city), class: "btn btn-warning" %> | <%= link_to 'Apagar', city, method: :delete, data: { confirm: 'Tem certeza?s' }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Cadastrar Cidade', new_city_path, class: 'btn btn-primary' %>

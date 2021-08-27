@@ -1,0 +1,48 @@
+<%= form_with(model: vacancy) do |form| %>
+  <% if vacancy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vacancy.errors.count, "error") %> prohibited this vacancy from being saved:</h2>
+
+      <ul>
+        <% vacancy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :city_id %>
+    <%= form.select(:city_id, @cities_options, {}, class: 'form-control') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cover %>
+    <%= form.file_field :cover, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select(:category_id, @categories_options, {}, class: 'form-control') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :salary %>
+    <%= form.text_field :salary, class: "form-control" %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= form.submit class: "btn btn-success" %>
+  </div>
+<% end %>

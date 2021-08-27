@@ -1,0 +1,2 @@
+module DashAdminHelper
+end

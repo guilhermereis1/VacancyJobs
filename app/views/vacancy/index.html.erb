@@ -1,0 +1,33 @@
+<h1>Vaga: <span class="badge bg-secondary"><%= @vacancy.name %></span></h1>
+<hr>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="card">
+     <% if @vacancy.cover.attached? && @vacancy.cover.attachment.blob.present? && @vacancy.cover.attachment.blob.persisted? %>
+        <%= image_tag(@vacancy.cover, class: "") %>
+      <% else %>
+        <%= image_tag 'unavailable.png' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <label for="">Cidade/Estado</label>
+    <input type="text" class="form-control" value="<%= @vacancy.city.name %> - <%= @vacancy.city.state.name %>" readonly>
+
+    <label for="">Título</label>
+    <input type="text" class="form-control" value="<%= @vacancy.name %>" readonly>
+
+    <label for="">Categoria</label>
+    <input type="text" class="form-control" value="<%= @vacancy.category.name %>" readonly>
+
+    <label for="">Faixa Salarial</label>
+    <input type="text" class="form-control" value="<%= real(@vacancy.salary) %>" readonly>
+  </div>
+</div>
+
+<label for="">Descrição</label>
+<textarea class="form-control" rows="10" readonly><%= @vacancy.content %></textarea>
+
+<br>
+<button type="button" class="btn btn-primary">Candidatar-se</button>

@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<label for="">Cidade</label>
+<input type="text" class="form-control" value="<%= @city.name %>" readonly>
+
+<label for="">Estado</label>
+<input type="text" class="form-control" value="<%= @city.state.name %>" readonly>
+
+<br>
+<%= link_to 'Editar', edit_city_path(@city), class: "btn btn-warning" %> | <%= link_to 'Voltar', cities_path, class: "btn btn-secondary" %>

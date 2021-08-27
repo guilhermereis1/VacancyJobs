@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<label>Estado</label>
+<input type="text" class="form-control" value="<%= @state.name %>" readonly>
+
+<br>
+<%= link_to 'Editar', edit_state_path(@state), class: "btn btn-warning" %> | <%= link_to 'Voltar', states_path, class: "btn btn-secondary" %>

@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<label for="">Categoria:</label>
+<input type="text" class="form-control" value="<%= @category.name %>" readonly>
+
+<br>
+<%= link_to 'Editar', edit_category_path(@category), class: "btn btn-warning" %> | <%= link_to 'Voltar', categories_path, class: "btn btn-secondary" %>
