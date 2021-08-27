@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @application_vacancy.user_id %>
+</p>
+
+<p>
+  <strong>Vacancy:</strong>
+  <%= @application_vacancy.vacancy_id %>
+</p>
+
+<%= link_to 'Edit', edit_application_vacancy_path(@application_vacancy) %> |
+<%= link_to 'Back', application_vacancies_path %>

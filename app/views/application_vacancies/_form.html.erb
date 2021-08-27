@@ -1,0 +1,27 @@
+<%= form_with(model: application_vacancy) do |form| %>
+  <% if application_vacancy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(application_vacancy.errors.count, "error") %> prohibited this application_vacancy from being saved:</h2>
+
+      <ul>
+        <% application_vacancy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vacancy_id %>
+    <%= form.text_field :vacancy_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

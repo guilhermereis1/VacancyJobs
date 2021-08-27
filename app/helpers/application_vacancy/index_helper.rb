@@ -1,0 +1,2 @@
+module ApplicationVacancy::IndexHelper
+end

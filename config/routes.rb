@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'application_vacancy/:v_id' => 'application_vacancy#index', as: :application_vacancy_id
+  get 'apply_to_vacancy/:vacancy_id/:user_id' => 'vacancy#apply_to_vacancy', as: :apply_to_vacancy
   namespace :dash_user do
     get 'dashboard/index'
   end

@@ -1,4 +1,4 @@
-<h1>Vaga: <span class="badge bg-secondary"><%= @vacancy.name %></span></h1>
+<h1><%= @vacancy.name %> <span class="badge bg-secondary">Candidatura: <%= @application_vacancy.id %></span></h1>
 <hr>
 
 <div class="row">
@@ -11,6 +11,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="col-md-8">
     <label for="">Cidade/Estado</label>
     <input type="text" class="form-control" value="<%= @vacancy.city.name %> - <%= @vacancy.city.state.name %>" readonly>
@@ -28,17 +29,3 @@
 
 <label for="">Descrição</label>
 <textarea class="form-control" rows="10" readonly><%= @vacancy.content %></textarea>
-
-<% if user_signed_in? then %>
-  <br>
-  <% if @registered.present? then %>
-    <div class="alert alert-primary" role="alert">
-      Voce já se candidatou para essa vaga! <b><%= link_to 'Ver Minha Candidatura', application_vacancy_id_path(@registered.id) %>
-    </div>
-  <% else %>
-    <%= link_to 'Candidatar-se', apply_to_vacancy_path(@vacancy.id, current_user.id), class: "btn btn-primary" %>
-  <% end %>
-<% else %>
-  <br>
-  <%= link_to 'Criar conta para Candidatar-se nesta Vaga', new_user_registration_path, class: "btn btn-primary" %>
-<% end %>

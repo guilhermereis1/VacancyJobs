@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_27_123759) do
+ActiveRecord::Schema.define(version: 2021_08_27_125451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(version: 2021_08_27_123759) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "application_vacancies", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "vacancy_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_application_vacancies_on_user_id"
+    t.index ["vacancy_id"], name: "index_application_vacancies_on_vacancy_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -101,6 +110,8 @@ ActiveRecord::Schema.define(version: 2021_08_27_123759) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "application_vacancies", "users"
+  add_foreign_key "application_vacancies", "vacancies"
   add_foreign_key "cities", "states"
   add_foreign_key "vacancies", "categories"
   add_foreign_key "vacancies", "cities"
