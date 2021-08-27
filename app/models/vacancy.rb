@@ -14,6 +14,7 @@
 class Vacancy < ApplicationRecord
   belongs_to :category
   belongs_to :city
+  has_many :application_vacancies, dependent: :destroy
 
   has_one_attached :cover
 end

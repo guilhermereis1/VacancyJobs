@@ -1,0 +1,19 @@
+<h1>Usuários (<%= @users.count %>)</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Email</th>
+      <th scope="col">Cadastrado em</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class="table align-middle">
+        <th scope="row"><%= user.id %></th>
+        <th scope="row"><%= user.email %></th>
+        <th scope="row"><%= user.created_at.to_s(:date_time_env_specific) %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

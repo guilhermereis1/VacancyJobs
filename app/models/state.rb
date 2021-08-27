@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class State < ApplicationRecord
+  has_many :cities, dependent: :destroy
 end
