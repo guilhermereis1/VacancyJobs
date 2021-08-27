@@ -1,0 +1,2 @@
+module DashUser::DashboardHelper
+end

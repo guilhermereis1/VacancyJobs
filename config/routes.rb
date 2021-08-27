@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :dash_user do
+    get 'dashboard/index'
+  end
+  devise_for :users
   resources :cities
   resources :states
   get 'vacancy/:vacancy_id' => 'vacancy#index', as: :vacancy_id
