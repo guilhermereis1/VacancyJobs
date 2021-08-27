@@ -3,5 +3,6 @@ class DashAdmin::DashboardController < ApplicationController
   layout 'admin'
   
   def index
+    @application_vacancies = ApplicationVacancy.all
   end
 end

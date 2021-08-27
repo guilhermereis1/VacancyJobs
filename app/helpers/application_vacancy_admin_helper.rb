@@ -1,0 +1,2 @@
+module ApplicationVacancyAdminHelper
+end

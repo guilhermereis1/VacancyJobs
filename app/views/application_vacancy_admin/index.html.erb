@@ -34,33 +34,6 @@
 <div class="documentation">Documentação</div>
 <hr>
 
-
-<div class="row">
-  <div class="col-md-6">
-    <%= form_tag application_vacancy_send_curriculum_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
-    <label>Currículo</label>
-    <%= file_field_tag :curriculum, class: 'form-control' %>
-
-    <div class="text-center">
-      <br>
-      <%= submit_tag "Enviar Currículo", class: "btn btn-success" %>
-    </div>
-    <% end %>
-  </div>
-    
-<div class="col-md-6">
-  <%= form_tag application_vacancy_send_documentation_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
-  <label>Outros Documentos (RG, CPF, CNH, etc...)</label>
-    <%= file_field_tag :documents, :multiple => true, class: 'form-control' %>
-    <p><b>Enviar 1 Documento por Vez!</b></p>
-    <div class="text-center">
-      <br>
-      <%= submit_tag "Enviar Documentos", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-md-6">
     <br>
@@ -73,7 +46,7 @@
     <br>
     <p>Documentos</p>
     <% @application_vacancy.documents.each do |document| %>
-      <%= image_tag(document, width: "100px") %>
+      <%= image_tag(document, width: "400px") %>
     <% end %>
   </div>
 </div>

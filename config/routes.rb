@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'application_vacancy_admin/:id' => 'application_vacancy_admin#index', as: :application_vacancy_admin
+  post 'send_documentation/:application_vacancy_id' => 'application_vacancy#send_documentation', as: :application_vacancy_send_documentation
+  post 'send_curriculum/:application_vacancy_id' => 'application_vacancy#send_curriculum', as: :application_vacancy_send_curriculum
   get 'application_vacancy/:v_id' => 'application_vacancy#index', as: :application_vacancy_id
   get 'apply_to_vacancy/:vacancy_id/:user_id' => 'vacancy#apply_to_vacancy', as: :apply_to_vacancy
   namespace :dash_user do
