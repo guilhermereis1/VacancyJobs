@@ -12,6 +12,7 @@ class ApplicationVacancyController < ApplicationController
     @application_vacancy = ApplicationVacancy.find(params[:application_vacancy_id])
     if params[:documents] != nil then
       @application_vacancy.documents.attach(params[:documents])
+      redirect_to application_vacancy_id_path(@application_vacancy.id)
     else
       redirect_to application_vacancy_id_path(@application_vacancy.id)
     end
@@ -22,6 +23,7 @@ class ApplicationVacancyController < ApplicationController
     @application_vacancy = ApplicationVacancy.find(params[:application_vacancy_id])
     if params[:curriculum] != nil then
       @application_vacancy.curriculum.attach(params[:curriculum])
+      redirect_to application_vacancy_id_path(@application_vacancy.id)
     else
       redirect_to application_vacancy_id_path(@application_vacancy.id)
     end

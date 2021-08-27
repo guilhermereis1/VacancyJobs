@@ -66,7 +66,7 @@
     <br>
     <% if @application_vacancy.curriculum.attached? && @application_vacancy.curriculum.attachment.blob.present? && @application_vacancy.curriculum.attachment.blob.persisted? %>
       <p>Currículo</p>
-      <%= image_tag(@application_vacancy.curriculum) %>
+      <%= image_tag(@application_vacancy.curriculum, width: "400px") %>
     <% end %>
   </div>
   <div class="col-md-6">

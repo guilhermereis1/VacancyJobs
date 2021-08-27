@@ -1,6 +1,7 @@
 <h1><%= @vacancy.name %> <span class="badge bg-secondary">Candidatura: <%= @application_vacancy.id %></span></h1>
 <hr>
-
+<p>Usuário: <b><%= @application_vacancy.user.email %></b></p>
+<br>
 <div class="row">
   <div class="col-md-4">
     <div class="card">
@@ -39,7 +40,7 @@
     <br>
     <% if @application_vacancy.curriculum.attached? && @application_vacancy.curriculum.attachment.blob.present? && @application_vacancy.curriculum.attachment.blob.persisted? %>
       <p>Currículo</p>
-      <%= image_tag(@application_vacancy.curriculum) %>
+      <%= image_tag(@application_vacancy.curriculum, width: "400px") %>
     <% end %>
   </div>
   <div class="col-md-6">

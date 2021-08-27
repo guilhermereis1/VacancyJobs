@@ -2,20 +2,32 @@
 <table class="table">
   <thead>
     <tr>
+      <th scope="col">ID</th>
       <th scope="col">Código da Vaga</th>
       <th scope="col">Vaga</th>
       <th scope="col">Faixa Salarial</th>
       <th scope="col">Cidade</th>
+      <th scope="col">Usuário</th>
+      <th scope="col">Documentos</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
     <% @application_vacancies.each do |av| %>
       <tr class="table align-middle">
-        <th scope="row"><%= av.vacancy.id %></th>
+        <th scope="row"><%= av.id %></th>
+        <th><%= av.vacancy.id %></th>
         <td><%= av.vacancy.name %></td>
         <td><%= real(av.vacancy.salary) %></td>
+        <td><%= av.user.email %></td>
         <td><%= av.vacancy.city.name %></td>
+        <td>
+          <% if av.documents.present? then %>
+            <button type="button" class="btn btn-success">Enviados</button>
+          <% else %>
+            <button type="button" class="btn btn-warning">Pendentes</button>
+          <% end %>
+        </td>
         <td>
           <%= link_to 'Ver', application_vacancy_admin_path(av.id), class: "btn btn-primary" %>
         </td>
