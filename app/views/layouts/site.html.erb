@@ -12,9 +12,11 @@
   </head>
 
   <body>
-    <%= render 'site/menu' %>
+    <%= render 'layouts/site/menu' %>
+    <%= render 'home/slide' %>
     <div class="container_site">
       <%= yield %>
     </div>
+    <%= render 'layouts/site/footer' %>
   </body>
 </html>
