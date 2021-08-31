@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'site_categories/index'
   namespace :dash_admin do
     get 'dashboard/index'
     get 'dashboard/users'

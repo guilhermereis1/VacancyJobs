@@ -1,0 +1,13 @@
+<h1>Categorias (<%= @categories.count %>)</h1>
+<p>Escolha uma Categoria para buscar as Vagas!</p>
+<hr>
+<ul class="list-group">
+  <% @categories.each do |category| %>
+    <%= link_to category_id_path(category.id), class: 'link_category' do %>
+      <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+        <%= category.name %>
+        <span class="badge bg-primary rounded-pill"><%= category.vacancies.count %></span>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
