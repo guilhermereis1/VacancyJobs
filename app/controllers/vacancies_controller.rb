@@ -72,6 +72,6 @@ class VacanciesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vacancy_params
-      params.require(:vacancy).permit(:name, :content, :category_id, :salary, :city_id, :cover)
+      params.require(:vacancy).permit(:name, :content, :category_id, :salary, :city_id)
     end
 end

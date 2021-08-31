@@ -6,14 +6,7 @@
   <%= link_to vacancy_id_path(job.id), class: "link_vacancy" do %>
     <div class="card mb-3">
       <div class="row g-0">
-        <div class="col-md-4">
-          <% if job.cover.attached? && job.cover.attachment.blob.present? && job.cover.attachment.blob.persisted? %>
-            <%= image_tag(job.cover, class: "img-fluid rounded-start") %>
-          <% else %>
-            <%= image_tag 'unavailable.png' %>
-          <% end %>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
           <div class="card-body">
             <h5 class="card-title"><%=h truncate(job.name, :length => 40) %> - <%= real(job.salary) %> - <%= job.city.name %></h5>
             <p class="card-text"><%=h truncate(job.content, :length => 200) %></p>
