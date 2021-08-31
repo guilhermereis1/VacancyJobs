@@ -1,4 +1,22 @@
 <%= render 'solutions' %>
+
+<div class="about">
+  <div class="row">
+    <div class="col-md-5">
+      <%= image_tag('https://www.rhcenter.com.br/img/shutterstock_1217126626-min.jpg', width: '100%', height: '') %>
+    </div>
+    <div class="col-md-7">
+      <div class="about_title">
+        Conheça a <b><%= application_name %></b>
+      </div>
+      <p class="about_text">Desde 1997 aproximamos pessoas e organizações com o objetivo de gerar resultados para os nossos clientes. Atuamos como parceiros estratégicos e oferecemos soluções em Recursos Humanos e Gestão de Pessoas apoiando nossos clientes na evolução de seus negócios.</p>
+      <p class="about_text">
+        Somos comprometidos com a sustentabilidade e buscamos sempre o equilíbrio social, econômico e ambiental em todas as nossas ações. Apoiamos e estamos comprometidos com os objetivos de desenvolvimento sustentável (ODS) da ONU.
+      </p>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-4">
     <%= render 'categories' %>
