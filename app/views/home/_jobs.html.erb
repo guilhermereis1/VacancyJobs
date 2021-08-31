@@ -7,8 +7,8 @@
       <div class="row g-0">
         <div class="col-md-12">
           <div class="card-body">
-            <h5 class="card-title"><%=h truncate(job.name, :length => 40) %> - <%= real(job.salary) %> - <%= job.city.name %></h5>
-            <p class="card-text"><%=h truncate(job.content, :length => 200) %></p>
+            <h5 class="card-title"><%=h truncate(job.name, :length => 40) %> <%= job.salary.present? ? "- #{real(job.salary)}" : nil %> - <%= job.city.name %></h5>
+            <p class="card-text"><%=h truncate(job.content, :length => 390) %></p>
             <p class="card-text">Vaga postada em: <small class="text-muted"><b><%= job.created_at.to_s(:date_time_env_specific) %></b></small></p>
           </div>
         </div>

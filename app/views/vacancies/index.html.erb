@@ -7,6 +7,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Código da Vaga</th>
       <th>Título</th>
       <th>Categoria</th>
       <th>Faixa Salarial</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @vacancies.each do |vacancy| %>
       <tr>
+        <td><%= vacancy.id %></td>
         <td><%= vacancy.name %></td>
         <td><%= vacancy.category.name %></td>
         <td><%= real(vacancy.salary) %></td>

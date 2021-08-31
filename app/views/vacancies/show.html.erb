@@ -1,16 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-  <div class="col-md-4">
-    <div class="card">
-     <% if @vacancy.cover.attached? && @vacancy.cover.attachment.blob.present? && @vacancy.cover.attachment.blob.persisted? %>
-        <%= image_tag(@vacancy.cover, class: "") %>
-      <% else %>
-        <%= image_tag 'unavailable.png' %>
-      <% end %>
-    </div>
-  </div>
-  <div class="col-md-8">
+  <div class="col-md-12">
     <label for="">Cidade/Estado</label>
     <input type="text" class="form-control" value="<%= @vacancy.city.name %> - <%= @vacancy.city.state.name %>" readonly>
 
@@ -26,7 +17,7 @@
 </div>
 
 <label for="">Descrição</label>
-<textarea class="form-control" rows="15" readonly><%= @vacancy.content %></textarea>
+<textarea class="form-control" rows="8" readonly><%= @vacancy.content %></textarea>
 
 <br>
 <%= link_to 'Editar', edit_vacancy_path(@vacancy), class: "btn btn-warning" %> | <%= link_to 'Voltar', vacancies_path, class: "btn btn-secondary" %>
