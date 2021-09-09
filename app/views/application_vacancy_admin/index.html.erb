@@ -3,17 +3,7 @@
 <p>Usuário: <b><%= @application_vacancy.user.email %></b></p>
 <br>
 <div class="row">
-  <div class="col-md-4">
-    <div class="card">
-     <% if @vacancy.cover.attached? && @vacancy.cover.attachment.blob.present? && @vacancy.cover.attachment.blob.persisted? %>
-        <%= image_tag(@vacancy.cover, class: "") %>
-      <% else %>
-        <%= image_tag 'unavailable.png' %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="col-md-8">
+  <div class="col-md-12">
     <label for="">Cidade/Estado</label>
     <input type="text" class="form-control" value="<%= @vacancy.city.name %> - <%= @vacancy.city.state.name %>" readonly>
 

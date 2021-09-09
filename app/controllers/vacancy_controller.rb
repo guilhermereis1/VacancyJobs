@@ -10,8 +10,10 @@ class VacancyController < ApplicationController
       if user_signed_in? then
         @application_vacancy = ApplicationVacancy.find_by(vacancy_id: vacancy_id)
 
-        if @application_vacancy.user_id == current_user.id
-          @registered = ApplicationVacancy.find_by(vacancy_id: vacancy_id)
+        if @application_vacancy.present? then
+          if @application_vacancy.user_id == current_user.id
+            @registered = ApplicationVacancy.find_by(vacancy_id: vacancy_id)
+          end
         end
       end
     end
