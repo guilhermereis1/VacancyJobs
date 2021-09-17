@@ -11,6 +11,7 @@
 #  has_cnh      :boolean          default(FALSE)
 #  has_address  :boolean          default(FALSE)
 #  document_cnh :json
+#  contacts     :json
 #
 require "test_helper"
 

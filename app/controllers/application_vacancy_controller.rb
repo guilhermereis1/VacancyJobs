@@ -62,14 +62,27 @@ class ApplicationVacancyController < ApplicationController
       cpf: params[:cpf],
       data_nas: params[:data_nas],
       pai: params[:pai],
-      mae: params[:mae],
-      numero_registro: params[:numero_registro],
-      validade: params[:validade],
-      primeira_hab: params[:primeira_hab],
-      numero_hab: params[:numero_hab]
+      mae: params[:mae]
     }
 
     @application_vacancy.update(document_cnh: data)
+    redirect_to application_vacancy_id_path(@application_vacancy.id)
+  end
+
+  def send_contacts
+    @application_vacancy = ApplicationVacancy.find(params[:application_vacancy_id].to_i)
+    
+    data = {
+      phone: params[:phone],
+      cep: params[:cep],
+      rua: params[:rua],
+      complemento: params[:complemento],
+      bairro: params[:bairro],
+      localidade: params[:localidade],
+      uf: params[:uf]
+    }
+
+    @application_vacancy.update(contacts: data)
     redirect_to application_vacancy_id_path(@application_vacancy.id)
   end
 end

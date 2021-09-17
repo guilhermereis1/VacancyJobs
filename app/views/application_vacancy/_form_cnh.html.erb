@@ -31,99 +31,10 @@
         <%= text_field_tag :mae, {}, value: input_value(@application_vacancy.document_cnh, 'mae'), class: "form-control", placeholder: 'NOME DA MÃE AQUI' %>
       </div>
 
-      <div class="col-md-4">
-        <label for="">NÚMERO REGISTRO</label>
-        <%= text_field_tag :numero_registro, {}, value: input_value(@application_vacancy.document_cnh, 'numero_registro'), class: "form-control", placeholder: 'EX: 12345678901' %>
-      </div>
-
-      <div class="col-md-4">
-        <label for="">VALIDADE</label>
-        <%= text_field_tag :validade, {}, value: input_value(@application_vacancy.document_cnh, 'validade'), class: "form-control", placeholder: '30/07/2019' %>
-      </div>
-
-      <div class="col-md-4">
-        <label for="">1º HABILITAÇÃO</label>
-        <%= text_field_tag :primeira_hab, {}, value: input_value(@application_vacancy.document_cnh, 'primeira_hab'), class: "form-control", placeholder: '31/04/2018' %>
-      </div>
-
       <div class="col-md-12">
-        <label for="">NÚMERO DA HABILITAÇÃO</label>
-        <%= text_field_tag :numero_hab, {}, value: input_value(@application_vacancy.document_cnh, 'numero_hab'), class: "form-control", placeholder: 'EX: 9823454345' %>
-        <p><b>Número que fica ao lado esquerdo da Habilitação!</b></p>
-      </div>
-
-      <div class="col-md-12">
+        <br>
         <%= submit_tag "Enviar", class: "btn btn-success" %>
       </div>
     </div>
   <% end %>
-<% end %>
-
-<div class="row">
-  <% if @application_vacancy.document_cnh.present? then %>
-    <% if fill_docs(@application_vacancy.document_cnh) then %>
-      <div class="col-md-6">
-        <div class="row">
-        <%= form_tag send_cnh_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
-          <div class="col-md-10">
-            <label for="">FOTO DA HABILITAÇÃO</label>
-            <%= file_field_tag :cnh, class: 'form-control' %>
-            <p>Importante: <b>A CNH precisa estar Nítida e aberta mostrando Frente e Verso!</b></p>
-          </div>
-
-            <div class="col-md-2">
-              <label for=""></label>
-              <%= submit_tag "Enviar Foto", class: "btn btn-success" %>
-            </div>
-          <% end %>
-        </div>
-        
-
-        <% if @application_vacancy.cnh.attached? && @application_vacancy.cnh.attachment.blob.present? && @application_vacancy.cnh.attachment.blob.persisted? %>
-          <p>CNH</p>
-          <%= image_tag(@application_vacancy.cnh, width: "400px") %>
-        <% end %>
-      </div>
-      
-      <div class="col-md-6">
-        <% if @application_vacancy.cnh.attached? && @application_vacancy.cnh.attachment.blob.present? && @application_vacancy.cnh.attachment.blob.persisted? %>
-          <div class="row">
-            <%= form_tag send_selfie_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
-              <div class="col-md-10">
-                <label for="">SELFIE SEGURANDO A CNH ABERTA</label>
-                <%= file_field_tag :cnh_selfie, class: 'form-control' %>
-                <p>Importante: <b>Seu rosto e a CNH precisam estar Nítidos!</b></p>
-              </div>
-
-              <div class="col-md-2">
-                <label for=""></label>
-                <%= submit_tag "Enviar Foto", class: "btn btn-success" %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-
-        <% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh_selfie.attachment.blob.present? && @application_vacancy.cnh_selfie.attachment.blob.persisted? %>
-          <p>Selfie com CNH</p>
-          <%= image_tag(@application_vacancy.cnh_selfie, width: "400px") %>
-        <% end %>
-      </div>
-
-
-    <% else %>
-      <div class="col-md-12">
-      <br>
-        <div class="alert alert-danger" role="alert">
-          Existe campos pendentes, preencha para próxima etapa!
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<br>
-<% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh.attached? && fill_docs(@application_vacancy.document_cnh) then %>
-  <div class="alert alert-success" role="alert">
-    Sua documentação está completa, entraremos em contato para mais informações!
-  </div>
 <% end %>

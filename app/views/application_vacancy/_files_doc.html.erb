@@ -1,0 +1,61 @@
+<div class="row">
+  <% if @application_vacancy.document_cnh.present? then %>
+    <% if fill_docs(@application_vacancy.document_cnh) then %>
+      <div class="col-md-6">
+        <div class="row">
+        <%= form_tag send_cnh_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
+          <div class="col-md-10">
+            <label for="">FOTO DA HABILITAÇÃO OU DO DOCUMENTO DE IDENTIDADE</label>
+            <%= file_field_tag :cnh, class: 'form-control' %>
+            <p>Importante: <b>O documento precisa estar Nítido!</b></p>
+          </div>
+
+            <div class="col-md-2">
+              <label for=""></label>
+              <%= submit_tag "Enviar Foto", class: "btn btn-success" %>
+            </div>
+          <% end %>
+        </div>
+        
+
+        <% if @application_vacancy.cnh.attached? && @application_vacancy.cnh.attachment.blob.present? && @application_vacancy.cnh.attachment.blob.persisted? %>
+          <p>Documento</p>
+          <%= image_tag(@application_vacancy.cnh, width: "400px") %>
+        <% end %>
+      </div>
+      
+      <div class="col-md-6">
+        <% if @application_vacancy.cnh.attached? && @application_vacancy.cnh.attachment.blob.present? && @application_vacancy.cnh.attachment.blob.persisted? %>
+          <div class="row">
+            <%= form_tag send_selfie_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
+              <div class="col-md-10">
+                <label for="">SELFIE SEGURANDO O DOCUMENTO</label>
+                <%= file_field_tag :cnh_selfie, class: 'form-control' %>
+                <p>Importante: <b>Seu rosto e o Documento precisam estar Nítidos!</b></p>
+              </div>
+
+              <div class="col-md-2">
+                <label for=""></label>
+                <%= submit_tag "Enviar Foto", class: "btn btn-success" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh_selfie.attachment.blob.present? && @application_vacancy.cnh_selfie.attachment.blob.persisted? %>
+          <p>Selfie com Documento</p>
+          <%= image_tag(@application_vacancy.cnh_selfie, width: "400px") %>
+        <% end %>
+      </div>
+
+
+    <% else %>
+      <div class="col-md-12">
+      <br>
+        <div class="alert alert-danger" role="alert">
+          Existe campos pendentes, preencha para próxima etapa!
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

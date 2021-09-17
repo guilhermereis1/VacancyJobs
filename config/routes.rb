@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'send_contacts/:application_vacancy_id' => 'application_vacancy#send_contacts', as: :send_contacts
   post 'send_selfie/:application_vacancy_id' => 'application_vacancy#send_selfie', as: :send_selfie
   post 'send_cnh/:application_vacancy_id' => 'application_vacancy#send_cnh', as: :send_cnh
   post 'send_cnh_info/:application_vacancy_id' => 'application_vacancy#send_cnh_info', as: :send_cnh_info

@@ -11,6 +11,7 @@
 #  has_cnh      :boolean          default(FALSE)
 #  has_address  :boolean          default(FALSE)
 #  document_cnh :json
+#  contacts     :json
 #
 class ApplicationVacancy < ApplicationRecord
   belongs_to :user

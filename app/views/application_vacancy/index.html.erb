@@ -1,29 +1,66 @@
-<h1><%= @vacancy.name %> <span class="badge bg-secondary">Candidatura: <%= @application_vacancy.id %></span></h1>
-<hr>
+<%#= render 'vacancy' %>
 
-<div class="row">
-  <div class="col-md-12">
-    <label for="">Cidade/Estado</label>
-    <input type="text" class="form-control" value="<%= @vacancy.city.name %> - <%= @vacancy.city.state.name %>" readonly>
+<br>
+<br>
+<div class="text-center">
+  <h3>Siga o passo a passo para ter uma boa candidatura!</h3>
+</div>
+<br>
+<br>
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Passo 1 - Preencher a Documentação necessária!
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <br>
+        <div class="documentation">Documentação</div>
+        <hr>
+        <%= render 'form_cnh' %>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Passo 2 - Foto da documentação!
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <br>
+        <div class="documentation">Arquivos</div>
+        <hr>
+        <%= render 'files_doc' %>
+      </div>
+    </div>
+  </div>
 
-    <label for="">Título</label>
-    <input type="text" class="form-control" value="<%= @vacancy.name %>" readonly>
-
-    <label for="">Categoria</label>
-    <input type="text" class="form-control" value="<%= @vacancy.category.name %>" readonly>
-
-    <label for="">Faixa Salarial</label>
-    <input type="text" class="form-control" value="<%= real(@vacancy.salary) %>" readonly>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#item4" aria-expanded="false" aria-controls="item4">
+        Passo 3 - Dados para contato
+      </button>
+    </h2>
+    <div id="item4" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <br>
+        <div class="documentation">Contatos</div>
+        <hr>
+        <%= render 'contacts' %>
+      </div>
+    </div>
   </div>
 </div>
 
-<label for="">Descrição</label>
-<textarea class="form-control" rows="10" readonly><%= @vacancy.content %></textarea>
-
 <br>
-<div class="documentation">Documentação</div>
-<hr>
-
-<%= render 'form_cnh' %>
+<% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh.attached? && fill_docs(@application_vacancy.document_cnh) then %>
+  <div class="alert alert-success" role="alert">
+    Sua documentação está completa, entraremos em contato para mais informações!
+  </div>
+<% end %>
 
 <%#= render 'files' %>

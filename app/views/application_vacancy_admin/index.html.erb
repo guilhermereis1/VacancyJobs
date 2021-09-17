@@ -57,27 +57,6 @@
         <label for="">FILIAÇÃO: MÃE</label>
         <%= text_field_tag :mae, {}, value: input_value(@application_vacancy.document_cnh, 'mae'), class: "form-control", placeholder: 'NOME DA MÃE AQUI', readonly: true %>
       </div>
-
-      <div class="col-md-4">
-        <label for="">NÚMERO REGISTRO</label>
-        <%= text_field_tag :numero_registro, {}, value: input_value(@application_vacancy.document_cnh, 'numero_registro'), class: "form-control", placeholder: 'EX: 12345678901', readonly: true %>
-      </div>
-
-      <div class="col-md-4">
-        <label for="">VALIDADE</label>
-        <%= text_field_tag :validade, {}, value: input_value(@application_vacancy.document_cnh, 'validade'), class: "form-control", placeholder: '30/07/2019', readonly: true %>
-      </div>
-
-      <div class="col-md-4">
-        <label for="">1º HABILITAÇÃO</label>
-        <%= text_field_tag :primeira_hab, {}, value: input_value(@application_vacancy.document_cnh, 'primeira_hab'), class: "form-control", placeholder: '31/04/2018', readonly: true %>
-      </div>
-
-      <div class="col-md-12">
-        <label for="">NÚMERO DA HABILITAÇÃO</label>
-        <%= text_field_tag :numero_hab, {}, value: input_value(@application_vacancy.document_cnh, 'numero_hab'), class: "form-control", placeholder: 'EX: 9823454345', readonly: true %>
-        <p><b>Número que fica ao lado esquerdo da Habilitação!</b></p>
-      </div>
     </div>
   <% end %>
 <% end %>
@@ -96,5 +75,42 @@
       <p>Selfie</p>
       <%= image_tag(@application_vacancy.cnh_selfie, width: "400px") %>
     <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <label for="">TELEFONE</label>
+    <%= text_field_tag :phone, {}, value: input_value(@application_vacancy.contacts, 'phone'), class: "form-control", placeholder: 'EX: 11992929292', readonly: true %>
+  </div>
+
+  <div class="col-md-4">
+    <label for="">CEP</label>
+    <%= text_field_tag :cep, {}, value: input_value(@application_vacancy.contacts, 'cep'), class: "form-control", placeholder: 'EX: 01001-000', readonly: true %>
+  </div>
+
+  <div class="col-md-8">
+    <label for="">LOGRADOURO</label>
+    <%= text_field_tag :rua, {}, value: input_value(@application_vacancy.contacts, 'rua'), class: "form-control", placeholder: 'EX: Praça da Sé', readonly: true %>
+  </div>
+
+  <div class="col-md-12">
+    <label for="">COMPLEMENTO</label>
+    <%= text_field_tag :complemento, {}, value: input_value(@application_vacancy.contacts, 'complemento'), class: "form-control", placeholder: 'EX: lado ímpar', readonly: true %>
+  </div>
+
+  <div class="col-md-4">
+    <label for="">BAIRRO</label>
+    <%= text_field_tag :bairro, {}, value: input_value(@application_vacancy.contacts, 'bairro'), class: "form-control", placeholder: 'EX: Sé', readonly: true %>
+  </div>
+
+  <div class="col-md-4">
+    <label for="">LOCALIDADE</label>
+    <%= text_field_tag :localidade, {}, value: input_value(@application_vacancy.contacts, 'localidade'), class: "form-control", placeholder: 'EX: São Paulo', readonly: true %>
+  </div>
+
+  <div class="col-md-4">
+    <label for="">UF</label>
+    <%= text_field_tag :uf, {}, value: input_value(@application_vacancy.contacts, 'uf'), class: "form-control", placeholder: 'EX: SP', readonly: true %>
   </div>
 </div>

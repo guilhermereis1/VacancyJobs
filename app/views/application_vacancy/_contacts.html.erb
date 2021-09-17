@@ -1,0 +1,43 @@
+<%= form_tag send_contacts_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="">TELEFONE</label>
+        <%= text_field_tag :phone, {}, value: input_value(@application_vacancy.contacts, 'phone'), class: "form-control", placeholder: 'EX: 11992929292' %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">CEP</label>
+        <%= text_field_tag :cep, {}, value: input_value(@application_vacancy.contacts, 'cep'), class: "form-control", placeholder: 'EX: 01001-000' %>
+      </div>
+
+      <div class="col-md-8">
+        <label for="">LOGRADOURO</label>
+        <%= text_field_tag :rua, {}, value: input_value(@application_vacancy.contacts, 'rua'), class: "form-control", placeholder: 'EX: Praça da Sé' %>
+      </div>
+
+      <div class="col-md-12">
+        <label for="">COMPLEMENTO</label>
+        <%= text_field_tag :complemento, {}, value: input_value(@application_vacancy.contacts, 'complemento'), class: "form-control", placeholder: 'EX: lado ímpar' %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">BAIRRO</label>
+        <%= text_field_tag :bairro, {}, value: input_value(@application_vacancy.contacts, 'bairro'), class: "form-control", placeholder: 'EX: Sé' %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">LOCALIDADE</label>
+        <%= text_field_tag :localidade, {}, value: input_value(@application_vacancy.contacts, 'localidade'), class: "form-control", placeholder: 'EX: São Paulo' %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">UF</label>
+        <%= text_field_tag :uf, {}, value: input_value(@application_vacancy.contacts, 'uf'), class: "form-control", placeholder: 'EX: SP' %>
+      </div>
+
+      <div class="col-md-12">
+        <br>
+        <%= submit_tag "Enviar", class: "btn btn-success" %>
+      </div>
+    </div>
+  <% end %>
