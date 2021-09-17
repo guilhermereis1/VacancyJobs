@@ -30,7 +30,7 @@ class VacancyController < ApplicationController
 
     respond_to do |format|
       if @application_vacancy.save
-        format.html { redirect_to dash_user_dashboard_index_path, notice: "Por favor enviar toda a Documentação necessário para a Vaga!" }
+        format.html { redirect_to application_vacancy_id_path(@application_vacancy.id), notice: "Por favor enviar toda a Documentação necessário para a Vaga!" }
         format.json { render :show, status: :created, location: @application_vacancy }
       end
     end
