@@ -22,7 +22,7 @@
         <td><%= av.user.email %></td>
         <td><%= av.vacancy.city.name %></td>
         <td>
-          <% if av.documents.present? then %>
+          <% if av.cnh_selfie.attached? && av.cnh.attached? && fill_docs(av.document_cnh) then %>
             <button type="button" class="btn btn-success">Enviados</button>
           <% else %>
             <button type="button" class="btn btn-warning">Pendentes</button>

@@ -11,6 +11,7 @@
       <th scope="col">Faixa Salarial</th>
       <th scope="col">Cidade</th>
       <th scope="col">Ações</th>
+      <th scope="col">Status Documentação</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,11 @@
         <td>
           <%= link_to 'Ver/Enviar Documentação', application_vacancy_id_path(av.id), class: "btn btn-primary" %>
         </td>
+        <% if av.document_cnh.present? then %>
+          <td><%= fill_docs(av.document_cnh) == true ? ('<button type="button" class="btn btn-success">Completo</button>').html_safe : ('<button type="button" class="btn btn-warning">Pendente</button>').html_safe %></td>
+        <% else %>
+          <td><button type="button" class="btn btn-warning">Pendente</button></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
