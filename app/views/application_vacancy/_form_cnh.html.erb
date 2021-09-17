@@ -84,28 +84,32 @@
           <%= image_tag(@application_vacancy.cnh, width: "400px") %>
         <% end %>
       </div>
-
+      
       <div class="col-md-6">
-        <div class="row">
-          <%= form_tag send_selfie_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
-            <div class="col-md-10">
-              <label for="">SELFIE SEGURANDO A CNH ABERTA</label>
-              <%= file_field_tag :cnh_selfie, class: 'form-control' %>
-              <p>Importante: <b>Seu rosto e a CNH precisam estar Nítidos!</b></p>
-            </div>
+        <% if @application_vacancy.cnh.attached? && @application_vacancy.cnh.attachment.blob.present? && @application_vacancy.cnh.attachment.blob.persisted? %>
+          <div class="row">
+            <%= form_tag send_selfie_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
+              <div class="col-md-10">
+                <label for="">SELFIE SEGURANDO A CNH ABERTA</label>
+                <%= file_field_tag :cnh_selfie, class: 'form-control' %>
+                <p>Importante: <b>Seu rosto e a CNH precisam estar Nítidos!</b></p>
+              </div>
 
-            <div class="col-md-2">
-              <label for=""></label>
-              <%= submit_tag "Enviar Foto", class: "btn btn-success" %>
-            </div>
-          <% end %>
-        </div>
+              <div class="col-md-2">
+                <label for=""></label>
+                <%= submit_tag "Enviar Foto", class: "btn btn-success" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
 
         <% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh_selfie.attachment.blob.present? && @application_vacancy.cnh_selfie.attachment.blob.persisted? %>
           <p>Selfie com CNH</p>
           <%= image_tag(@application_vacancy.cnh_selfie, width: "400px") %>
         <% end %>
       </div>
+
+
     <% else %>
       <div class="col-md-12">
       <br>
