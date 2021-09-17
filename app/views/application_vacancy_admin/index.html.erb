@@ -25,19 +25,76 @@
 <div class="documentation">Documentação</div>
 <hr>
 
+<% if !@application_vacancy.has_cnh then %>
+  <%= form_tag send_cnh_info_path(@application_vacancy.id), multipart: true, local: true, method: 'post' do %>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="">NOME COMPLETO</label>
+        <%= text_field_tag :name, {}, value: input_value(@application_vacancy.document_cnh, 'name'), class: "form-control", placeholder: 'EX: JOÃO DA SILVA NETO', readonly: true %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="">DOC.IDENTIDADE/ORG. EMISSOR / UF</label>
+        <%= text_field_tag :rg, {}, value: input_value(@application_vacancy.document_cnh, 'rg'), class: "form-control", placeholder: 'EX: 12345678 SSP MT', readonly: true %>
+      </div>
+
+      <div class="col-md-3">
+        <label for="">CPF</label>
+        <%= text_field_tag :cpf, {}, value: input_value(@application_vacancy.document_cnh, 'cpf'), class: "form-control", placeholder: 'EX: 123.456.789-10', readonly: true %>
+      </div>
+
+      <div class="col-md-3">
+        <label for="">DATA NASCIMENTO</label>
+        <%= text_field_tag :data_nas, {}, value: input_value(@application_vacancy.document_cnh, 'data_nas'), class: "form-control", placeholder: 'EX: 10/09/1996', readonly: true %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="">FILIAÇÃO: PAI</label>
+        <%= text_field_tag :pai, {}, value: input_value(@application_vacancy.document_cnh, 'pai'), class: "form-control", placeholder: 'NOME DO PAI AQUI', readonly: true %>
+      </div>
+
+      <div class="col-md-6">
+        <label for="">FILIAÇÃO: MÃE</label>
+        <%= text_field_tag :mae, {}, value: input_value(@application_vacancy.document_cnh, 'mae'), class: "form-control", placeholder: 'NOME DA MÃE AQUI', readonly: true %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">NÚMERO REGISTRO</label>
+        <%= text_field_tag :numero_registro, {}, value: input_value(@application_vacancy.document_cnh, 'numero_registro'), class: "form-control", placeholder: 'EX: 12345678901', readonly: true %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">VALIDADE</label>
+        <%= text_field_tag :validade, {}, value: input_value(@application_vacancy.document_cnh, 'validade'), class: "form-control", placeholder: '30/07/2019', readonly: true %>
+      </div>
+
+      <div class="col-md-4">
+        <label for="">1º HABILITAÇÃO</label>
+        <%= text_field_tag :primeira_hab, {}, value: input_value(@application_vacancy.document_cnh, 'primeira_hab'), class: "form-control", placeholder: '31/04/2018', readonly: true %>
+      </div>
+
+      <div class="col-md-12">
+        <label for="">NÚMERO DA HABILITAÇÃO</label>
+        <%= text_field_tag :numero_hab, {}, value: input_value(@application_vacancy.document_cnh, 'numero_hab'), class: "form-control", placeholder: 'EX: 9823454345', readonly: true %>
+        <p><b>Número que fica ao lado esquerdo da Habilitação!</b></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
 <div class="row">
   <div class="col-md-6">
     <br>
-    <% if @application_vacancy.curriculum.attached? && @application_vacancy.curriculum.attachment.blob.present? && @application_vacancy.curriculum.attachment.blob.persisted? %>
-      <p>Currículo</p>
-      <%= image_tag(@application_vacancy.curriculum, width: "400px") %>
+    <% if @application_vacancy.cnh.attached? && @application_vacancy.cnh.attachment.blob.present? && @application_vacancy.cnh.attachment.blob.persisted? %>
+      <p>CNH</p>
+      <%= image_tag(@application_vacancy.cnh, width: "400px") %>
     <% end %>
   </div>
   <div class="col-md-6">
     <br>
-    <p>Documentos</p>
-    <% @application_vacancy.documents.each do |document| %>
-      <%= image_tag(document, width: "400px") %>
+    <% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh_selfie.attachment.blob.present? && @application_vacancy.cnh_selfie.attachment.blob.persisted? %>
+      <p>Selfie</p>
+      <%= image_tag(@application_vacancy.cnh_selfie, width: "400px") %>
     <% end %>
   </div>
 </div>
