@@ -1,7 +1,7 @@
 module ApplicationVacancyHelper
 
   def fill_docs(fields)
-    fields['name'].present? && fields['rg'].present? && fields['cpf'].present? && fields['numero_registro'].present? && fields['numero_hab'].present?
+    fields['name'].present? && fields['rg'].present? && fields['cpf'].present?
   end
 
   def input_value(record, key)
