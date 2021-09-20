@@ -23,37 +23,4 @@ class ApplicationVacancy < ApplicationRecord
   has_one_attached :cnh_selfie
 
   enum status: { pending: 0, complete: 1 }
-
-  # validate :acceptable_curriculum
-  # validate :acceptable_documents
-
-  private
-
-  def acceptable_curriculum
-    return unless documents.attached?
-
-    unless documents.byte_size <= 5.megabyte
-      errors.add(:documents, "Arquivo muito grande!")
-    end
-
-    acceptable_types = ["pdf"]
-
-    unless acceptable_types.include?(documents.content_type)
-      errors.add(:documents, "Apenas PDF")
-    end
-  end
-
-  def acceptable_documents
-    return unless documents.attached?
-
-    unless documents.byte_size <= 5.megabyte
-      errors.add(:documents, "Arquivo muito grande!")
-    end
-
-    acceptable_types = ["image/jpeg", "image/png", "image/webp"]
-
-    unless acceptable_types.include?(documents.content_type)
-      errors.add(:documents, "Apenas PNG e JPEG")
-    end
-  end
 end

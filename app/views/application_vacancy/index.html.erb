@@ -32,9 +32,13 @@
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <br>
-        <div class="documentation">Arquivos</div>
-        <hr>
-        <%= render 'files_doc' %>
+        <% if validations_documents(@application_vacancy.document_cnh) then %>
+          <div class="documentation">Arquivos</div>
+          <hr>
+          <%= render 'files_doc' %>
+        <% else %>
+          <%= render 'pending_documentation' %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -48,19 +52,25 @@
     <div id="item4" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <br>
-        <div class="documentation">Contatos</div>
-        <hr>
-        <%= render 'contacts' %>
+        <% if validations_files(@application_vacancy) then %>
+          <div class="documentation">Contatos</div>
+          <hr>
+          <%= render 'contacts' %>
+        <% else %>
+          <%= render 'pending_documentation' %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
 <br>
-<% if @application_vacancy.cnh_selfie.attached? && @application_vacancy.cnh.attached? && fill_docs(@application_vacancy.document_cnh) then %>
+<% if validations_contacts(@application_vacancy) then %>
   <div class="alert alert-success" role="alert">
     Sua documentação está completa, entraremos em contato para mais informações!
   </div>
+<% else %>
+  <div class="alert alert-danger" role="alert">
+    Por Favor complete a documentação para prosseguir!
+  </div>
 <% end %>
-
-<%#= render 'files' %>
